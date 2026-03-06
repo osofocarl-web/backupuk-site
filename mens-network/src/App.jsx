@@ -14,6 +14,7 @@ import Chapters from './pages/Chapters';
 import Join from './pages/Join';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
+import Invite from './pages/Invite';
 
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -49,6 +50,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/invite" element={<Invite />} />
         </Routes>
       </main>
       <Footer />
