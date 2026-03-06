@@ -1,8 +1,43 @@
 import { Link } from 'react-router-dom';
 import { User, ShieldAlert, BadgeCheck, Users } from 'lucide-react';
+import { useState } from 'react';
 import './Join.css';
 
 const Join = () => {
+    const [status, setStatus] = useState('idle'); // 'idle', 'submitting', 'success', 'error'
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        setStatus('submitting');
+        const formData = new FormData(event.target);
+
+        formData.append("access_key", "1e5b32fa-b16b-4969-8881-aa0231c50e22");
+        formData.append("subject", "New Brotherhood Registration");
+
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: json
+            }).then((res) => res.json());
+
+            if (res.success) {
+                setStatus('success');
+                event.target.reset();
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            setStatus('error');
+        }
+    };
+
     return (
         <div className="join-page">
             {/* Header */}
@@ -85,30 +120,30 @@ const Join = () => {
                     <div className="form-container glass-card max-w-600 mx-auto">
                         <h2 className="text-center mb-4 text-accent">Registration Form</h2>
 
-                        <form className="custom-form">
+                        <form className="custom-form" onSubmit={onSubmit}>
                             <div className="form-group">
                                 <label>Name</label>
-                                <input type="text" placeholder="John Doe" required />
+                                <input type="text" name="name" placeholder="John Doe" required />
                             </div>
 
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="john@example.com" required />
+                                <input type="email" name="email" placeholder="john@example.com" required />
                             </div>
 
                             <div className="form-group">
                                 <label>Phone</label>
-                                <input type="tel" placeholder="+44 20 7123 4567" required />
+                                <input type="tel" name="phone" placeholder="+44 20 7123 4567" required />
                             </div>
 
                             <div className="form-group">
                                 <label>City / Location</label>
-                                <input type="text" placeholder="London, UK" required />
+                                <input type="text" name="location" placeholder="London, UK" required />
                             </div>
 
                             <div className="form-group">
                                 <label>Membership Type</label>
-                                <select required defaultValue="">
+                                <select name="membership_type" required defaultValue="">
                                     <option value="" disabled>Select an option</option>
                                     <option value="free">Free Member</option>
                                     <option value="partner">Brotherhood Partner</option>
@@ -118,17 +153,30 @@ const Join = () => {
 
                             <div className="form-group">
                                 <label>Areas of Interest</label>
-                                <textarea rows="3" placeholder="I'm interested in leadership development, finding a mentor, etc."></textarea>
+                                <textarea name="areas_of_interest" rows="3" placeholder="I'm interested in leadership development, finding a mentor, etc."></textarea>
                             </div>
 
                             <div className="form-group checkbox-group">
-                                <input type="checkbox" id="consent" required />
+                                <input type="checkbox" name="consent" id="consent" required value="Yes" />
                                 <label htmlFor="consent" className="text-muted text-sm">
                                     I consent to Backup Men's Network processing my data to manage my membership and contact me regarding the network.
                                 </label>
                             </div>
 
-                            <button type="button" className="btn btn-primary btn-lg full-width mt-4" style={{ width: '100%' }}>Submit Registration</button>
+                            <button type="submit" className="btn btn-primary btn-lg full-width mt-4" style={{ width: '100%' }} disabled={status === 'submitting'}>
+                                {status === 'submitting' ? 'Submitting...' : 'Submit Registration'}
+                            </button>
+
+                            {status === 'success' && (
+                                <p className="text-center mt-3" style={{ color: '#00cc66', fontWeight: 'bold' }}>
+                                    ✓ Registration successful! We will be in touch soon.
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-center mt-3" style={{ color: '#ff4b4b', fontWeight: 'bold' }}>
+                                    Something went wrong. Please try again.
+                                </p>
+                            )}
                         </form>
 
                     </div>
