@@ -54,15 +54,18 @@ const Footer = () => {
                         <a href="#" aria-label="Youtube"><Youtube size={20} /></a>
                     </div>
                     <p className="mt-3 text-sm text-muted">
-                        support@backupmensnetwork.org<br />
+                        info@backupuk.org<br />
                         +44 7836 681413
                     </p>
                 </div>
 
             </div>
 
-            <div className="footer-bottom text-center">
-                <p className="text-muted text-sm">
+            <div className="footer-bottom text-center mt-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                <p className="description mb-3 pb-3" style={{ fontSize: '0.9rem', maxWidth: '800px', margin: '0 auto' }}>
+                    Backup Men's Network operates in affiliation with <strong>Hopealive Outreach Ministries</strong>, a registered charity in the UK (Charity Number: 1211973).
+                </p>
+                <p className="text-muted text-sm m-0">
                     &copy; {new Date().getFullYear()} Backup Men's Network. All rights reserved.
                 </p>
             </div>
