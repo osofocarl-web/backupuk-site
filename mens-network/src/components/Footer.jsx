@@ -54,7 +54,7 @@ const Footer = () => {
                         <a href="#" aria-label="Youtube"><Youtube size={20} /></a>
                     </div>
                     <p className="mt-3 text-sm text-muted">
-                        info@backupuk.org<br />
+                        helpline@backupuk.org<br />
                         +44 7836 681413
                     </p>
                 </div>
