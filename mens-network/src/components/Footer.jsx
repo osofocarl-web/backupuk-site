@@ -63,10 +63,10 @@ const Footer = () => {
 
             <div className="footer-bottom text-center mt-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <p className="description mb-3 pb-3" style={{ fontSize: '0.9rem', maxWidth: '800px', margin: '0 auto' }}>
-                    Backup Men's Network operates in affiliation with <strong>Hopealive Outreach Ministries</strong>, a registered charity in the UK (Charity Number: 1211973).
+                    Backup Men&apos;s Network operates in affiliation with <strong>Hopealive Outreach Ministries</strong>, a registered charity in the UK (Charity Number: 1211973).
                 </p>
                 <p className="text-muted text-sm m-0">
-                    &copy; {new Date().getFullYear()} Backup Men's Network. All rights reserved.
+                    &copy; {new Date().getFullYear()} Backup Men&apos;s Network. All rights reserved.
                 </p>
             </div>
         </footer>

@@ -47,7 +47,7 @@ const Contact = () => {
         <div className="contact-page">
             {/* Header */}
             <section className="page-header text-center">
-                <div className="container animate-fade-in">
+                <div className="container">
                     <MessageSquare size={64} className="text-accent mb-4 mx-auto" />
                     <h1 className="text-accent">CONNECT WITH THE NETWORK</h1>
                     <p className="lead max-w-800 mx-auto">
@@ -81,7 +81,7 @@ const Contact = () => {
                         </button>
                     </div>
 
-                    <div className="form-container glass-card max-w-800 mx-auto animate-fade-in">
+                    <div className="form-container glass-card max-w-800 mx-auto">
 
                         {/* General Contact Form */}
                         {activeForm === 'general' && (
