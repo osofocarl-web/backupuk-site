@@ -119,11 +119,11 @@ const About = () => {
                         <div className="leader-card glass-card featured-leader">
                             <div className="leader-header">
                                 <h3>John Carl Acquah</h3>
-                                <span className="badge">Visionary</span>
+                                <span className="badge">Convenor</span>
                             </div>
                             <p className="leader-roles text-accent">Psychologist | Community Advocate | Conference Speaker</p>
                             <p className="description mt-3">
-                                John Carl Acquah is the visionary behind Backup Men’s Network. With a background in psychology, leadership, and community development, he is passionate about helping men rediscover purpose, resilience, and strength.
+                                John Carl Acquah is the convenor behind Backup Men’s Network. With a background in psychology, leadership, and community development, he is passionate about helping men rediscover purpose, resilience, and strength.
                             </p>
                             <p className="description mt-2">
                                 Through mentorship, conferences, and leadership initiatives, he works to build a global brotherhood where men support one another to thrive.
@@ -139,7 +139,7 @@ const About = () => {
                                     <span className="badge">Coordinator</span>
                                 </div>
                                 <p className="description mt-3">
-                                    William plays a key role in organizing programs, supporting community engagement, and strengthening the brotherhood network.
+                                    William is the leader of SpeakIT. He has experience in networking and providing support for men going through trauma, depression, and anxiety.
                                 </p>
                             </div>
 

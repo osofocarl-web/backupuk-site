@@ -67,6 +67,47 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Welcome Section (John Carl Acquah) */}
+            <section className="welcome-section section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                <div className="container">
+                    <div className="welcome-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', alignItems: 'center' }}>
+                        <div className="welcome-image animate-fade-in" style={{ textAlign: 'center' }}>
+                            <img
+                                src="/john-carl-acquah.jpg"
+                                alt="Pastor John Carl Acquah"
+                                style={{
+                                    width: '100%',
+                                    maxWidth: '400px',
+                                    height: 'auto',
+                                    borderRadius: 'var(--radius-lg)',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                                    border: '2px solid var(--color-gold-muted)'
+                                }}
+                            />
+                        </div>
+                        <div className="welcome-content animate-fade-in delay-100">
+                            <h2 className="text-accent mb-4">MEET YOUR CONVENOR</h2>
+                            <h3 className="mb-2" style={{ fontSize: '1.5rem', color: 'var(--color-text)' }}>Pastor John Carl Acquah</h3>
+                            <p className="text-accent mb-4" style={{ fontWeight: '600' }}>Convenor, Psychologist, and Community Advocate</p>
+
+                            <p className="description mb-3">
+                                Welcome to Backup Men’s Network. I'm Pastor John Carl Acquah, and my passion is helping men rediscover their strength, find their purpose, and build meaningful brotherhood.
+                            </p>
+                            <p className="description mb-3">
+                                With over three decades of pastoral leadership and community work, I’ve dedicated my life to empowering men like you to overcome life’s hurdles and rebuild with real confidence. As a trained counsellor and psychologist, I believe in bridging theological insight with psychological understanding—supporting your emotional, spiritual, and personal growth all at once.
+                            </p>
+                            <p className="description mb-3">
+                                Whether through mentorship, networking events, or brotherhood circles, my goal is to create spaces where you can connect, grow, and thrive. You don't have to face life's pressures alone.
+                            </p>
+
+                            <blockquote style={{ borderLeft: '4px solid var(--color-gold)', paddingLeft: '1rem', marginTop: '1.5rem', fontStyle: 'italic', fontSize: '1.1rem' }}>
+                                "Helping men rise, rebuild, and move forward—together."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Why Backup Section */}
             <section className="section-padding container why-section">
                 <div className="why-text animate-fade-in">
