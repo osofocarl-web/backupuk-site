@@ -153,13 +153,22 @@ const About = () => {
                                 </p>
                             </div>
 
-                            <div className="leader-card glass-card">
-                                <div className="leader-header">
-                                    <h3>Prophet Gil</h3>
-                                    <span className="badge">Coordinator</span>
+                            <div className="leader-card glass-card" style={{ gridColumn: '1 / -1' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.5rem' }}>
+                                    <img src="/pastor-gil.jpg" alt="Gilbert Twumasi Appiah" style={{ width: '100%', maxWidth: '250px', borderRadius: '12px', border: '2px solid var(--color-gold-muted)', marginBottom: '1rem' }} />
+                                    <div className="leader-header text-center w-100 justify-content-center">
+                                        <h3>Gilbert Twumasi Appiah</h3>
+                                        <span className="badge mx-auto d-table mt-2">Mentor</span>
+                                    </div>
                                 </div>
                                 <p className="description mt-3">
-                                    Prophet Gil supports the network through mentorship, leadership encouragement, and spiritual insight that strengthens men in their personal journeys.
+                                    Gilbert Twumasi Appiah is a devoted follower of Christ and an ordained minister of the Gospel with a strong passion for supporting and uplifting men in their journey through life. As a mentor within the Backup Men’s Network, he is committed to helping men rediscover strength, purpose, and direction, especially during seasons of challenge and transition.
+                                </p>
+                                <p className="description mt-3">
+                                    With a heart for encouragement and restoration, Gilbert draws from personal experience, biblical wisdom, and years of ministry to inspire men to rise above adversity and build lives of faith, resilience, and integrity.
+                                </p>
+                                <p className="description mt-3">
+                                    Alongside his ministry work, Gilbert brings a diverse professional background that includes counselling, behavioural support, healthcare training, and engineering. This combination of spiritual insight and practical experience allows him to offer balanced guidance to men seeking growth, healing, and renewed confidence.
                                 </p>
                             </div>
 

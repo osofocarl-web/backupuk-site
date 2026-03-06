@@ -1,6 +1,5 @@
 import { CalendarDays, ArrowUpRight, Shield, Award, Users, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import retreatImg from '../assets/spain-retreat.jpg';
 import './Programs.css';
 
 const Programs = () => {
@@ -73,7 +72,7 @@ const Programs = () => {
                         </div>
                         <h3 className="mt-4 mb-3 text-accent">GLOBAL BROTHERHOOD RETREATS</h3>
                         <div className="retreat-flyer mt-3 mb-4">
-                            <img src={retreatImg} alt="Backup Men's Retreat Spain 2026" className="responsive-img rounded-img" />
+                            <img src="/spain-retreat.jpg" alt="Backup Men's Retreat Spain 2026" className="responsive-img rounded-img" />
                         </div>
                         <p className="description mb-4">
                             Special retreats and travel experiences where men reconnect, recharge, and build strong relationships. Join us in Spain for our upcoming 2026 retreat!
