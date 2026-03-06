@@ -68,11 +68,43 @@ const Resources = () => {
                 </div>
             </section>
 
-            {/* Notice */}
-            <section className="notice-section section-padding text-center">
-                <div className="container p-5 glass-card max-w-800 mx-auto">
-                    <h2>More Resources Coming Soon</h2>
-                    <p className="lead text-muted mt-3 mb-0">Join the network to gain immediate access to the full resource library and mentor-curated guides.</p>
+            {/* Resource Downloads */}
+            <section className="resources-downloads section-padding text-center">
+                <div className="container">
+                    <h2 className="text-accent mb-5">DOWNLOADABLE MATERIALS</h2>
+                    <div className="resources-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+
+                        {/* Resource Card 1 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">The Anchor Framework</h3>
+                            <p className="description mb-4">A comprehensive guide on how our mentorship system works, expectations for Anchors, and how to get the most out of your brotherhood circle.</p>
+                            <a href="#" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><FileText size={18} className="me-2" /> Download PDF</a>
+                        </div>
+
+                        {/* Resource Card 2 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">Daily Resilience Devotional</h3>
+                            <p className="description mb-4">A 30-day reading plan focused on mental strength, emotional healing, and finding purpose after setbacks.</p>
+                            <a href="#" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><BookOpen size={18} className="me-2" /> Read Online</a>
+                        </div>
+
+                        {/* Resource Card 3 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">Brotherhood Discussion Guides</h3>
+                            <p className="description mb-4">Topic outlines and guiding questions for local meetups covering topics like fatherhood, finances, and faith.</p>
+                            <a href="#" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><FolderOpen size={18} className="me-2" /> Access Library</a>
+                        </div>
+
+                        {/* Resource Card 4 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">Uplift Conference Sessions</h3>
+                            <p className="description mb-4">Watch recordings from our past annual networking conferences, featuring keynotes from our leadership team.</p>
+                            <a href="#" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><Video size={18} className="me-2" /> Watch Videos</a>
+                        </div>
+
+                    </div>
+
+                    <p className="lead text-muted mt-5 mb-0">Join the network to gain immediate access to the full resource library and mentor-curated guides.</p>
                 </div>
             </section>
         </div>
