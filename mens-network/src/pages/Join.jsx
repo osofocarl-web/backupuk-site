@@ -34,6 +34,7 @@ const Join = () => {
                 setStatus('error');
             }
         } catch (error) {
+            console.error("Web3Forms Error:", error);
             setStatus('error');
         }
     };
