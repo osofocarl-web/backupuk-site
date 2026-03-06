@@ -1,0 +1,354 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/LucideIcon.astro';
+import { supabase } from '../lib/supabase';
+
+const { cookies, redirect } = Astro;
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (!accessToken || !refreshToken) {
+  return redirect("/auth");
+}
+
+// Set up Supabase auth for the server
+await supabase.auth.setSession({
+  access_token: accessToken.value,
+  refresh_token: refreshToken.value,
+});
+
+const { data: { user } } = await supabase.auth.getUser();
+
+if (!user) {
+  return redirect("/auth");
+}
+
+// Fetch stats
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('*')
+  .eq('id', user.id)
+  .single();
+
+const dayStreak = profile?.day_streak || 0;
+const chaptersRead = profile?.chapters_read || 0;
+const modulesDone = profile?.modules_done || 0;
+const email = user.email || 'User';
+const joinDate = new Date(profile?.join_date || user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+---
+
+<Layout title="My Profile">
+  <div class="profile-header animate-fade-in">
+    <div class="avatar">
+      <Icon name="user" size={48} />
+    </div>
+    <h1>{email.split('@')[0]}</h1>
+    <p class="join-date">Joined {joinDate}</p>
+  </div>
+
+  <div class="stats-overview animate-fade-in" style="animation-delay: 0.1s;">
+    <div class="stat-box glass">
+      <Icon name="flame" class="stat-icon streak" />
+      <div class="stat-data">
+        <span class="value">{dayStreak}</span>
+        <span class="label">Day Streak</span>
+      </div>
+    </div>
+    
+    <div class="stat-box glass">
+      <Icon name="book-open" class="stat-icon read" />
+      <div class="stat-data">
+        <span class="value">{chaptersRead}</span>
+        <span class="label">Chapters Read</span>
+      </div>
+    </div>
+    
+    <div class="stat-box glass">
+      <Icon name="graduation-cap" class="stat-icon school" />
+      <div class="stat-data">
+        <span class="value">{modulesDone}</span>
+        <span class="label">Modules Done</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-section animate-fade-in" style="animation-delay: 0.2s;">
+    <h3><Icon name="settings" size={20} /> Settings & Preferences</h3>
+    
+    <div class="settings-list glass">
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Daily Reminders</h4>
+          <p>Get notified for your daily reading</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Study Mode</h4>
+          <p>Highlight key verses automatically</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <h4>Translation</h4>
+          <p>Preferred Bible version</p>
+        </div>
+        <select class="select-input">
+          <option>ESV</option>
+          <option>NIV</option>
+          <option>KJV</option>
+          <option>NLT</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="logout-container animate-fade-in" style="animation-delay: 0.3s;">
+    <button id="logout-btn" class="btn-danger">
+      <Icon name="log-out" /> Log Out
+    </button>
+  </div>
+
+  <style>
+    .profile-header {
+      text-align: center;
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      border: 3px solid var(--color-gold);
+      box-shadow: 0 4px 15px rgba(244, 180, 0, 0.3);
+    }
+
+    .profile-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .join-date {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+
+    .stats-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat-box {
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+    }
+
+    .stat-icon {
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .streak { background: rgba(255, 126, 95, 0.2); color: #ff7e5f; }
+    .read { background: rgba(78, 84, 200, 0.2); color: #7980f0; }
+    .school { background: rgba(17, 153, 142, 0.2); color: #11998e; }
+
+    .stat-data {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .settings-section {
+      margin-top: 3rem;
+    }
+
+    .settings-section h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-gold);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .settings-list {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1.5rem;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--color-glass-border);
+    }
+
+    .setting-item:last-child {
+      border-bottom: none;
+    }
+
+    .setting-info h4 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.1rem;
+    }
+
+    .setting-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .select-input {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--color-glass-border);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      outline: none;
+    }
+
+    .select-input option {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    /* Toggle Switch Styles */
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--color-gold);
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px var(--color-gold);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    .logout-container {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-danger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      background: rgba(233, 69, 96, 0.1);
+      color: #e94560;
+      border: 1px solid rgba(233, 69, 96, 0.5);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-danger:hover {
+      background: #e94560;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .stats-overview {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    import { supabase } from '../lib/supabase';
+
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        // Clear cookies on client side
+        document.cookie = 'sb-access-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'sb-refresh-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        window.location.href = '/auth';
+      });
+    }
+  </script>
+</Layout>

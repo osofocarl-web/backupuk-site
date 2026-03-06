@@ -1,0 +1,36 @@
+---
+import * as icons from 'lucide-static';
+
+interface Props {
+  name: string;
+  size?: number | string;
+  color?: string;
+  class?: string;
+}
+
+const { name, size = 24, color = 'currentColor', class: className } = Astro.props;
+
+// Convert kebab-case to UpperCamelCase for lucide-static lookup
+const iconName = name.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('');
+const icon = (icons as any)[iconName];
+
+if (!icon) {
+  console.warn(`Icon "${name}" (as "${iconName}") not found in lucide-static.`);
+}
+---
+
+{icon && (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class={className}
+    set:html={icon}
+  />
+)}

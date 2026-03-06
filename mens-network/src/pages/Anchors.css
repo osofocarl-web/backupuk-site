@@ -1,0 +1,215 @@
+/* Anchors Page Styles */
+.anchors-page .page-header {
+    padding: 8rem 0 4rem;
+    background: radial-gradient(circle at top center, rgba(28, 37, 65, 0.8) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.anchors-page .max-w-900 {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.anchors-page .max-w-800 {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.anchors-page .max-w-600 {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.anchors-page .mb-3 {
+    margin-bottom: 1rem;
+}
+
+.anchors-page .mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.anchors-page .mb-5 {
+    margin-bottom: 2.5rem;
+}
+
+.anchors-page .mt-5 {
+    margin-top: 2.5rem;
+}
+
+.anchors-page .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.anchors-page .lead {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+}
+
+/* Role Grid */
+.role-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.role-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 140px;
+}
+
+.role-item h4 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+
+/* Workflow Section */
+.workflow-section {
+    background: var(--color-secondary);
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.timeline-step {
+    text-align: center;
+    background: rgba(10, 17, 40, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    margin: 0 auto 1.5rem;
+}
+
+.timeline-step h3 {
+    color: var(--color-text);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.timeline-step p {
+    color: var(--color-text-muted);
+}
+
+/* Training Framework */
+.training-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.training-card {
+    padding: 2rem;
+    border-top-color: var(--color-text-muted);
+}
+
+.training-card h3 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.purpose {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.purpose strong {
+    color: var(--color-text);
+}
+
+.topics-list {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.topics-list li {
+    position: relative;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.topics-list li::before {
+    content: '→';
+    color: var(--color-accent);
+    position: absolute;
+    left: -1.5rem;
+}
+
+.outcome {
+    background: rgba(10, 17, 40, 0.8);
+    padding: 1rem;
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 4px 4px 0;
+}
+
+.outcome strong {
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.3rem;
+    font-family: var(--font-heading);
+}
+
+/* Anchor Code Section */
+.anchor-code-section {
+    background: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.code-item {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .training-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .code-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .timeline-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

@@ -1,0 +1,123 @@
+/* Pillars Page Styles */
+.pillars-page .page-header {
+    padding: 8rem 0 4rem;
+    background: radial-gradient(circle at top center, rgba(28, 37, 65, 0.8) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pillars-page .max-w-800 {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pillars-page .max-w-600 {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pillars-page .mb-3 {
+    margin-bottom: 1rem;
+}
+
+.pillars-page .mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.pillars-page .mt-3 {
+    margin-top: 1rem;
+}
+
+.pillars-page .mt-4 {
+    margin-top: 1.5rem;
+}
+
+.pillars-page .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pillars-page .lead {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+}
+
+.pillars-page .description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pillar-detail {
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--color-accent);
+}
+
+.pillar-number {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 7rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 0;
+    line-height: 1;
+}
+
+.pillar-content {
+    position: relative;
+    z-index: 1;
+}
+
+.flex-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.flex-header h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.creed-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border-left: 2px solid var(--color-accent);
+}
+
+.creed-box p {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.creed-box strong {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Make the 7th pillar span full width on bottom */
+    .pillar-detail:nth-child(7) {
+        grid-column: 1 / -1;
+    }
+}

@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Icon from '../../components/LucideIcon.astro';
+
+const plans = await getCollection('study-plan');
+const sortedPlans = plans.sort((a, b) => a.data.day - b.data.day);
+---
+
+<Layout title="1 Year Study Plan">
+  <section class="study-intro animate-fade-in">
+    <div class="header-with-icon">
+      <Icon name="calendar-days" class="study-icon" />
+      <h1>1 Year <span class="gold-text">Study Plan</span></h1>
+    </div>
+    <p>Journey through the word day by day.</p>
+  </section>
+
+  <div class="plans-grid animate-fade-in" style="animation-delay: 0.1s;">
+    {sortedPlans.map(plan => (
+      <a href={`/study/${plan.slug}`} class="plan-card glass">
+        <div class="plan-day">Day {plan.data.day}</div>
+        <h3>{plan.data.title}</h3>
+        <p class="verse-ref">{plan.data.keyVerseReference}</p>
+        <div class="category-tag">{plan.data.category}</div>
+      </a>
+    ))}
+  </div>
+
+  <style>
+    .study-intro {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .header-with-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .study-icon {
+      color: #4e54c8;
+      width: 48px;
+      height: 48px;
+    }
+
+    .gold-text { color: var(--color-gold); }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .plan-card {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .plan-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-gold-muted);
+    }
+
+    .plan-day {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #7980f0;
+      text-transform: uppercase;
+    }
+
+    .plan-card h3 {
+      font-size: 1.2rem;
+    }
+
+    .verse-ref {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    .category-tag {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(78, 84, 200, 0.2);
+      color: #7980f0;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 640px) {
+      .plans-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</Layout>

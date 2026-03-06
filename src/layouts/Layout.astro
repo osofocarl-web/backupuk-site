@@ -1,0 +1,191 @@
+---
+import '../styles/global.css';
+import Icon from '../components/LucideIcon.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Lifeline Jacket Bible Study App - Empowering your faith journey." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Lifeline Jacket</title>
+    <meta name="description" content={description} />
+    
+    <!-- PWA -->
+    <script src="/src/pwa.ts"></script>
+    { /* @ts-ignore */ }
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="glass main-header">
+        <div class="logo">
+          <img src="/logo.png" alt="Lifeline Jacket Logo" class="logo-img" />
+          <span>Lifeline <span>Jacket</span></span>
+        </div>
+        <nav class="desktop-nav">
+          <a href="/">Home</a>
+          <a href="/study">Study Plan</a>
+          <a href="/bible-school">Bible School</a>
+          <a href="/children">Children</a>
+        </nav>
+        <a href="/profile" class="profile-btn">
+          <Icon name="user" />
+        </a>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <nav class="mobile-nav glass">
+        <a href="/" class="active">
+          <Icon name="home" />
+          <span>Home</span>
+        </a>
+        <a href="/study">
+          <Icon name="calendar" />
+          <span>Study</span>
+        </a>
+        <a href="/bible-school">
+          <Icon name="graduation-cap" />
+          <span>School</span>
+        </a>
+        <a href="/children">
+          <Icon name="smile" />
+          <span>Kids</span>
+        </a>
+        <a href="/profile">
+          <Icon name="user" />
+          <span>Me</span>
+        </a>
+      </nav>
+    </div>
+
+    <style>
+      .app-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 5rem; /* Space for mobile nav */
+      }
+
+      .main-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        margin: 0.5rem;
+        border-radius: var(--radius-md);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+
+      .logo span span {
+        color: var(--color-gold);
+      }
+
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .desktop-nav {
+        display: none;
+        gap: 2rem;
+      }
+
+      .desktop-nav a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .desktop-nav a:hover {
+        color: var(--color-gold);
+      }
+
+      .profile-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-primary-light);
+        border-radius: 50%;
+        color: white;
+      }
+
+      main {
+        flex: 1;
+        padding: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .mobile-nav {
+        position: fixed;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        height: 4rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 100;
+        border-radius: var(--radius-lg);
+      }
+
+      .mobile-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        transition: all 0.3s;
+      }
+
+      .mobile-nav a.active {
+        color: var(--color-gold);
+      }
+
+      .mobile-nav a:hover {
+        color: white;
+      }
+
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: flex;
+        }
+        .mobile-nav {
+          display: none;
+        }
+        .app-container {
+          padding-bottom: 0;
+        }
+      }
+    </style>
+  </body>
+</html>
