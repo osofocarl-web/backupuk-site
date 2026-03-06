@@ -1,304 +1,43 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Icon from '../components/LucideIcon.astro';
 ---
 
-<Layout title="Home">
-  <section class="hero animate-fade-in">
-    <h1>Welcome, <span class="gold-text">John</span></h1>
-    <p>Your journey through the Word continues today.</p>
-  </section>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backup Men's Network</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #222;">
+    <section style="padding: 60px 20px; text-align: center; background: #111827; color: white;">
+      <h1 style="margin-bottom: 10px;">Backup Men’s Network</h1>
+      <p style="max-width: 700px; margin: 0 auto; font-size: 18px;">
+        A global brotherhood supporting men through networking, mentorship, restoration and empowerment.
+      </p>
+    </section>
 
-  <div class="stats-grid animate-fade-in" style="animation-delay: 0.1s;">
-    <div class="stat-card glass">
-      <div class="stat-header">
-        <Icon name="flame" class="streak-icon" />
-        <span>12 Day Streak</span>
-      </div>
-      <div class="progress-ring-container">
-        <svg viewBox="0 0 36 36" class="circular-chart gold">
-          <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-          <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-          <text x="18" y="20.35" class="percentage">75%</text>
-        </svg>
-      </div>
-      <p class="stat-label">Monthly Goal</p>
-    </div>
+    <section style="padding: 40px 20px; max-width: 1000px; margin: 0 auto;">
+      <h2>About Us</h2>
+      <p>
+        Backup Men’s Network is a movement committed to helping men rise, rebuild, connect, and thrive through meaningful brotherhood, leadership, and support.
+      </p>
 
-    <div class="stat-card glass">
-      <div class="stat-header">
-        <Icon name="award" class="badge-icon" />
-        <span>Badges</span>
-      </div>
-      <div class="badges-mini">
-        <div class="badge-circle"><Icon name="shield-check" /></div>
-        <div class="badge-circle"><Icon name="zap" /></div>
-        <div class="badge-circle locked"><Icon name="lock" /></div>
-      </div>
-      <p class="stat-label">3 New Available</p>
-    </div>
-  </div>
+      <h2>Our Focus</h2>
+      <p>
+        Mentorship, retreats, networking, restoration, empowerment, and community for men at every stage of life.
+      </p>
 
-  <section class="today-card glass animate-fade-in" style="animation-delay: 0.2s;">
-    <div class="card-tag">Today's Reading</div>
-    <h2>Romans 12:1-21</h2>
-    <p>"Do not be conformed to this world, but be transformed by the renewal of your mind..."</p>
-    <a href="/study/today" class="btn-primary">
-      Start Reading
-      <Icon name="arrow-right" />
-    </a>
-  </section>
+      <h2>Programs</h2>
+      <ul>
+        <li>Men’s mentorship and support</li>
+        <li>Retreats and conferences</li>
+        <li>Brotherhood meetups</li>
+        <li>Personal growth and restoration</li>
+      </ul>
 
-  <div class="action-grid animate-fade-in" style="animation-delay: 0.3s;">
-    <a href="/study" class="action-card glass">
-      <div class="action-icon study"><Icon name="calendar-days" /></div>
-      <div class="action-content">
-        <h3>1 Year Plan</h3>
-        <p>Day 142 of 365</p>
-      </div>
-    </a>
-
-    <a href="/bible-school" class="action-card glass">
-      <div class="action-icon school"><Icon name="graduation-cap" /></div>
-      <div class="action-content">
-        <h3>Bible School</h3>
-        <p>Module 4: Prayer</p>
-      </div>
-    </a>
-
-    <a href="/children" class="action-card glass">
-      <div class="action-icon kids"><Icon name="gamepad-2" /></div>
-      <div class="action-content">
-        <h3>Kids Zone</h3>
-        <p>Games and Stories</p>
-      </div>
-    </a>
-
-    <a href="/notes" class="action-card glass">
-      <div class="action-icon notes"><Icon name="sticky-note" /></div>
-      <div class="action-content">
-        <h3>My Notes</h3>
-        <p>12 Saved Insights</p>
-      </div>
-    </a>
-  </div>
-
-  <style>
-    .hero {
-      padding: 1rem 0;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .gold-text {
-      color: var(--color-gold);
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .stat-card {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .stat-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      width: 100%;
-    }
-
-    .streak-icon { color: #ff7e5f; }
-    .badge-icon { color: var(--color-gold); }
-
-    .progress-ring-container {
-      width: 80px;
-      margin: 0.5rem 0;
-    }
-
-    .circular-chart {
-      display: block;
-      margin: 10px auto;
-      max-width: 80%;
-      max-height: 250px;
-    }
-
-    .circle-bg {
-      fill: none;
-      stroke: var(--color-primary-light);
-      stroke-width: 3.8;
-    }
-
-    .circle {
-      fill: none;
-      stroke-width: 2.8;
-      stroke-linecap: round;
-      animation: progress 1s ease-out forwards;
-    }
-
-    @keyframes progress {
-      0% { stroke-dasharray: 0 100; }
-    }
-
-    .gold .circle { stroke: var(--color-gold); }
-
-    .percentage {
-      fill: white;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.6rem;
-      text-anchor: middle;
-      font-weight: 700;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--color-text-muted);
-    }
-
-    .badges-mini {
-      display: flex;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-
-    .badge-circle {
-      width: 32px;
-      height: 32px;
-      background: var(--gradient-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(233, 69, 96, 0.4);
-    }
-
-    .badge-circle.locked {
-      background: var(--color-primary-light);
-      box-shadow: none;
-      opacity: 0.5;
-    }
-
-    .today-card {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .today-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100px;
-      height: 100px;
-      background: var(--color-accent);
-      filter: blur(80px);
-      opacity: 0.2;
-    }
-
-    .card-tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: var(--color-accent);
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
-
-    .today-card p {
-      color: var(--color-text-muted);
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.50rem;
-      padding: 0.8rem 1.5rem;
-      background: var(--gradient-accent);
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
-    }
-
-    .action-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .action-card {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      padding: 1.25rem;
-      transition: transform 0.3s;
-    }
-
-    .action-card:hover {
-      transform: scale(1.02);
-      border-color: var(--color-gold-muted);
-    }
-
-    .action-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-    }
-
-    .study { background: #4e54c8; }
-    .school { background: #11998e; }
-    .kids { background: #f2994a; }
-    .notes { background: #9b59b6; }
-
-    .action-content h3 {
-      margin-bottom: 0.1rem;
-      font-size: 1.1rem;
-    }
-
-    .action-content p {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-    }
-
-    @media (min-width: 640px) {
-      .action-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-  </style>
-</Layout>
+      <h2>Contact</h2>
+      <p>
+        More information coming soon.
+      </p>
+    </section>
+  </body>
+</html>
