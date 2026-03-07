@@ -1,0 +1,74 @@
+[
+    {
+        "city": "London",
+        "country": "United Kingdom",
+        "continent": "Europe",
+        "coordinates": [
+            -0.1276,
+            51.5074
+        ],
+        "slug": "backup-london",
+        "status": "active",
+        "local_host_name": "David K.",
+        "local_host_role": "Chapter Coordinator",
+        "contact_email": "london@backupuk.org",
+        "description": "The pioneer UK chapter. We meet monthly in Central London to build brotherhood and forge leaders.",
+        "number_of_events": 8,
+        "number_of_anchors": 12,
+        "next_event_date": "2026-09-12T09:00:00Z"
+    },
+    {
+        "city": "Accra",
+        "country": "Ghana",
+        "continent": "Africa",
+        "coordinates": [
+            -0.1870,
+            5.6037
+        ],
+        "slug": "backup-accra",
+        "status": "active",
+        "local_host_name": "Samuel T.",
+        "local_host_role": "Regional Anchor",
+        "contact_email": "accra@backupuk.org",
+        "description": "The heart of the movement in West Africa. Connecting men across Ghana for intensive mentorship.",
+        "number_of_events": 14,
+        "number_of_anchors": 20,
+        "next_event_date": "2026-10-05T09:00:00Z"
+    },
+    {
+        "city": "New York",
+        "country": "United States",
+        "continent": "North America",
+        "coordinates": [
+            -74.0060,
+            40.7128
+        ],
+        "slug": "backup-new-york",
+        "status": "active",
+        "local_host_name": "Marcus L.",
+        "local_host_role": "City Host",
+        "contact_email": "ny@backupuk.org",
+        "description": "Building momentum in the US. Our Manhattan breakfast sessions focus on career and spiritual resilience.",
+        "number_of_events": 4,
+        "number_of_anchors": 6,
+        "next_event_date": "2026-11-20T08:00:00Z"
+    },
+    {
+        "city": "Johannesburg",
+        "country": "South Africa",
+        "continent": "Africa",
+        "coordinates": [
+            28.0473,
+            -26.2041
+        ],
+        "slug": "backup-johannesburg",
+        "status": "active",
+        "local_host_name": "Sipho M.",
+        "local_host_role": "Chapter Anchor",
+        "contact_email": "joburg@backupuk.org",
+        "description": "A rising brotherhood in SA committed to radical mentorship and restoring family foundations.",
+        "number_of_events": 3,
+        "number_of_anchors": 5,
+        "next_event_date": "2026-12-05T10:00:00Z"
+    }
+]
