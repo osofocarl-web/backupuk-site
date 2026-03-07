@@ -3,6 +3,7 @@
 -- 1. Create a table for user profiles
 CREATE TABLE public.profiles (
   id uuid NOT NULL REFERENCES auth.users ON DELETE CASCADE,
+  role text DEFAULT 'member' NOT NULL,
   day_streak int4 DEFAULT 0,
   chapters_read int4 DEFAULT 0,
   modules_done int4 DEFAULT 0,
@@ -64,3 +65,36 @@ CREATE TABLE public.completed_modules (
 
 ALTER TABLE public.completed_modules ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users can track their own completed modules" ON public.completed_modules FOR ALL USING (auth.uid() = user_id);
+
+-- 5. Create the church_attendance table
+CREATE TABLE public.church_attendance (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id uuid REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
+  date date NOT NULL, -- e.g. '2026-03-08'
+  service_type text NOT NULL DEFAULT 'Sunday Service',
+  created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+  UNIQUE(user_id, date)
+);
+
+ALTER TABLE public.church_attendance ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can track their own attendance" ON public.church_attendance FOR ALL USING (auth.uid() = user_id);
+
+-- 6. Create the kids_progress table
+CREATE TABLE public.kids_progress (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id uuid REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
+  lesson_slug text NOT NULL,
+  stars_earned integer DEFAULT 1,
+  completed_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+  UNIQUE(user_id, lesson_slug)
+);
+
+ALTER TABLE public.kids_progress ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can track their kids progress" ON public.kids_progress FOR ALL USING (auth.uid() = user_id);
+
+-- 7. HOW TO UPGRADE EXISTING TABLES & GRANT ADMIN RIGHTS
+-- Run this if you already created the profiles table:
+-- ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS role text DEFAULT 'member' NOT NULL;
+
+-- Run this to make a specific user an admin:
+-- UPDATE public.profiles SET role = 'admin' WHERE id = (SELECT id FROM auth.users WHERE email = 'YOUR_EMAIL@HERE.com');

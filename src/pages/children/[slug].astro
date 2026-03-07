@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import Icon from '../../components/LucideIcon.astro';
+import KidsLessonInteractive from '../../components/KidsLessonInteractive.jsx';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('children-zone');
+  return entries.map(entry => ({
+    params: { slug: entry.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('children-zone', slug);
+
+if (!entry) {
+    return Astro.redirect('/children');
+}
+
+const { Content } = await entry.render();
+
+// Reconstruct a simple JS object to pass to the React component
+const lessonProps = {
+    title: entry.data.title,
+    ageBand: entry.data.ageBand,
+    memoryVerse: entry.data.memoryVerse,
+    questions: entry.data.questions,
+    slug: entry.slug
+};
+---
+
+<Layout title={`${entry.data.title} | Kids Zone`}>
+  <article class="kids-lesson animate-fade-in">
+    <header class="lesson-header glass">
+      <div class="header-content">
+        <a href="/children" class="back-link">
+          <Icon name="arrow-left" size={20} /> Back to Kids Zone
+        </a>
+        <div class="age-band">Age {entry.data.ageBand}</div>
+        <h1>{entry.data.title}</h1>
+      </div>
+      <Icon name="gamepad-2" class="header-bg-icon" />
+    </header>
+
+    <div class="kids-content-area">
+        <KidsLessonInteractive client:load lesson={lessonProps}>
+            <Content />
+        </KidsLessonInteractive>
+    </div>
+  </article>
+
+  <style>
+    .kids-lesson {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .lesson-header {
+      position: relative;
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(242, 153, 74, 0.1) 0%, rgba(15, 23, 42, 0.6) 100%);
+      border: 1px solid rgba(242, 153, 74, 0.3);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .age-band {
+      display: inline-block;
+      background: rgba(242, 153, 74, 0.2);
+      color: #f2994a;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: white;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #f2994a;
+    }
+
+    .header-bg-icon {
+      position: absolute;
+      right: -20px;
+      bottom: -40px;
+      width: 250px;
+      height: 250px;
+      color: rgba(242, 153, 74, 0.05);
+      z-index: 1;
+      transform: rotate(-15deg);
+    }
+
+    .kids-content-area {
+        position: relative;
+        z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .lesson-header {
+        padding: 2rem;
+      }
+      
+      .lesson-header h1 {
+        font-size: 2rem;
+      }
+
+      .header-bg-icon {
+        width: 150px;
+        height: 150px;
+        right: -10px;
+        bottom: -20px;
+      }
+    }
+  </style>
+</Layout>

@@ -14,7 +14,7 @@ const studyPlan = defineCollection({
     }),
 });
 
-const bibleSchool = defineCollection({
+const academy = defineCollection({
     type: 'content',
     schema: z.object({
         module: z.number(),
@@ -37,6 +37,6 @@ const childrenZone = defineCollection({
 
 export const collections = {
     'study-plan': studyPlan,
-    'bible-school': bibleSchool,
+    'academy': academy,
     'children-zone': childrenZone,
 };

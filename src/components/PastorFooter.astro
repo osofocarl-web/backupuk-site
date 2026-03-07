@@ -1,0 +1,162 @@
+---
+import Icon from './LucideIcon.astro';
+---
+
+<footer class="pastor-footer glass">
+  <div class="footer-content">
+    <div class="pastor-image-wrapper">
+      <img src="/logo.png" alt="Pastor Carlking" class="pastor-image" />
+    </div>
+    <div class="footer-message">
+      <h4>Welcome to Lifeline Jacket</h4>
+      <p>I am so thrilled you are dedicating time to deepen your walk with God. May this app be a powerful tool in your spiritual journey.</p>
+      
+      <div class="signature-box">
+        <span class="signature">pastor carl</span>
+        <span class="title">Lead Pastor</span>
+      </div>
+
+      <div class="support-info">
+        <h5><Icon name="help-circle" size={14} /> Need Administrative Support?</h5>
+        <a href="mailto:admin@lifelineglobalministries.org"><Icon name="mail" size={14} /> admin@lifelineglobalministries.org</a>
+        <a href="tel:07939837099"><Icon name="phone" size={14} /> Tel: 07939837099</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pastor-footer {
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-bottom: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative accent */
+  .pastor-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pastor-image-wrapper {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    padding: 3px;
+    background: var(--gradient-accent);
+    box-shadow: 0 4px 15px rgba(244, 180, 0, 0.3);
+  }
+
+  .pastor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: var(--color-bg); /* fallback background */
+  }
+
+  .footer-message {
+    flex: 1;
+  }
+
+  .footer-message h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .footer-message p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+  }
+
+  .signature-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .signature {
+    font-family: 'Brush Script MT', 'Palace Script MT', cursive;
+    font-size: 2rem;
+    color: white;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 0.25rem;
+  }
+
+  .title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .support-info {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-glass-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .support-info h5 {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    margin: 0 0 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .support-info a {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .support-info a:hover {
+    color: white;
+  }
+
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .signature-box {
+      align-items: center;
+    }
+    
+    .pastor-footer {
+        padding-bottom: 6rem; /* extra space for mobile nav overlay */
+    }
+  }
+</style>

@@ -1,69 +1,86 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 import Icon from '../../components/LucideIcon.astro';
+import DailyStudyTracker from '../../components/DailyStudyTracker.jsx';
+import planData from '../../data/biblePlan.json';
+
+export const prerender = true;
 
 export async function getStaticPaths() {
-  const plans = await getCollection('study-plan');
-  return plans.map(entry => ({
-    params: { day: entry.slug },
+  return planData.map(entry => ({
+    params: { day: `day-${entry.day}` },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
-  <div class="reading-header animate-fade-in">
-    <a href="/study" class="back-link"><Icon name="arrow-left" size={16}/> Back to Plan</a>
-    <div class="day-badge">Day {entry.data.day}</div>
-    <h1>{entry.data.title}</h1>
-    
-    <div class="references glass">
-      <h3>Today's Reading</h3>
-      <ul>
-        {entry.data.references.map(ref => (
-          <li><Icon name="book-open" size={16}/> {ref}</li>
-        ))}
-      </ul>
-    </div>
-  </div>
-
-  <div class="content format-text animate-fade-in" style="animation-delay: 0.1s;">
-    <div class="key-verse glass accent-border">
-      <p>"{entry.data.keyVerse}"</p>
-      <span class="ref">- {entry.data.keyVerseReference}</span>
-    </div>
-    
-    <div class="lesson-content">
-      <Content />
-    </div>
-    
-    <div class="reflection-box glass">
-      <h3>Reflection Questions</h3>
-      <ol>
-        {entry.data.reflectionQuestions.map(q => (
-          <li>{q}</li>
-        ))}
-      </ol>
-      <div class="prayer">
-        <h4><Icon name="heart" size={16} /> Prayer Focus</h4>
-        <p>{entry.data.prayerFocus}</p>
+<Layout title={`${entry.title} | 1-Year Bible Plan`}>
+  <article class="daily-reading animate-fade-in">
+    <header class="reading-header glass">
+      <div class="header-content">
+        <a href="/study" class="back-link">
+          <Icon name="arrow-left" size={20} /> Back to 1-Year Plan
+        </a>
+        <div class="day-band">Yearly Plan</div>
+        <h1>{entry.title}</h1>
       </div>
-    </div>
-  </div>
+      <Icon name="book-open" class="header-bg-icon" />
+    </header>
 
-  <div class="complete-action animate-fade-in" style="animation-delay: 0.2s;">
-    <button class="btn-primary complete-btn">
-      <Icon name="check-circle" /> Complete Day {entry.data.day}
-    </button>
-  </div>
+    <div class="reading-content-area">
+        <div class="scripture-box glass">
+            <h2>Today's Assigned Reading:</h2>
+            <p class="reading-chapters">{entry.reading}</p>
+            <p class="reading-instruction">Open your Bible or preferred Bible app and read the chapters assigned for today. Read slowly, take notes, and allow the Holy Spirit to minister to you.</p>
+        </div>
+
+        {/* Note: This is an Astro page, not React, but we can embed React components */}
+        <DailyStudyTracker client:load dayId={`day-${entry.day}`} dayTitle={entry.title} />
+    </div>
+  </article>
 
   <style>
+    .daily-reading {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
     .reading-header {
+      position: relative;
+      padding: 3rem;
+      border-radius: var(--radius-lg);
       margin-bottom: 2rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(17, 153, 142, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(17, 153, 142, 0.3);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .day-band {
+      display: inline-block;
+      background: rgba(17, 153, 142, 0.2);
+      color: #38ef7d;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .reading-header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: white;
     }
 
     .back-link {
@@ -71,223 +88,72 @@ const { Content } = await entry.render();
       align-items: center;
       gap: 0.5rem;
       color: var(--color-text-muted);
-      font-size: 0.9rem;
+      text-decoration: none;
       margin-bottom: 1.5rem;
-      transition: color 0.3s;
+      font-weight: 600;
+      transition: color 0.2s;
     }
 
     .back-link:hover {
-      color: var(--color-gold);
+      color: #38ef7d;
     }
 
-    .day-badge {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(78, 84, 200, 0.2);
-      color: #7980f0;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
+    .header-bg-icon {
+      position: absolute;
+      right: -20px;
+      bottom: -40px;
+      width: 250px;
+      height: 250px;
+      color: rgba(17, 153, 142, 0.05);
+      z-index: 1;
+      transform: rotate(-15deg);
     }
 
-    .reading-header h1 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+    .scripture-box {
+        padding: 3rem;
+        border-radius: 16px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .scripture-box h2 {
+        color: var(--color-text-muted);
+        font-size: 1.25rem;
+        margin-top: 0;
     }
 
-    .references {
-      padding: 1.5rem;
+    .reading-chapters {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: var(--color-gold);
+        margin: 1rem 0;
+        line-height: 1.2;
+        text-shadow: 0 4px 20px rgba(242, 153, 74, 0.2);
     }
 
-    .references h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: var(--color-gold);
-      text-transform: uppercase;
+    .reading-instruction {
+        color: var(--color-text-muted);
+        line-height: 1.6;
+        max-width: 80%;
+        margin: 0 auto;
+        font-size: 1.1rem;
     }
 
-    .references ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    @media (max-width: 768px) {
+      .reading-header {
+        padding: 2rem;
+      }
+      
+      .reading-header h1 {
+        font-size: 2rem;
+      }
 
-    .references li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 600;
-    }
-
-    .references li :global(svg) {
-      color: #7980f0;
-    }
-
-    .format-text {
-      line-height: 1.7;
-    }
-
-    .key-verse {
-      padding: 1.5rem;
-      margin: 2rem 0;
-      font-style: italic;
-      text-align: center;
-      position: relative;
-    }
-
-    .key-verse p {
-      font-size: 1.2rem;
-      color: white;
-      margin-bottom: 0.5rem;
-    }
-
-    .key-verse .ref {
-      color: var(--color-gold);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .lesson-content :global(h2), .lesson-content :global(h3) {
-      color: var(--color-accent);
-      margin: 2rem 0 1rem;
-    }
-
-    .lesson-content :global(p) {
-      margin-bottom: 1rem;
-      color: var(--color-text-muted);
-    }
-
-    .lesson-content :global(strong) {
-      color: white;
-    }
-
-    .reflection-box {
-      margin-top: 3rem;
-      padding: 2rem;
-      border-top: 2px solid var(--color-gold-muted);
-    }
-
-    .reflection-box h3 {
-      margin-bottom: 1.5rem;
-      color: var(--color-accent);
-    }
-
-    .reflection-box ol {
-      padding-left: 1.5rem;
-      margin-bottom: 2rem;
-      color: var(--color-text-muted);
-    }
-
-    .reflection-box li {
-      margin-bottom: 0.75rem;
-    }
-
-    .prayer {
-      background: rgba(233, 69, 96, 0.1);
-      padding: 1.5rem;
-      border-radius: 8px;
-    }
-
-    .prayer h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--color-accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .prayer p {
-      color: var(--color-text-muted);
-    }
-
-    .complete-action {
-      margin-top: 3rem;
-      text-align: center;
-      padding-bottom: 2rem;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      background: var(--gradient-accent);
-      color: white;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+      .reading-chapters {
+          font-size: 2.5rem;
+      }
+      .reading-instruction {
+          max-width: 100%;
+      }
     }
   </style>
-
-  <script>
-    import { supabase } from '../../lib/supabase';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const completeBtn = document.querySelector('.complete-btn');
-      // Extract the day identifier from the URL path
-      const dayPath = window.location.pathname.split('/').filter(Boolean).pop();
-
-      if (completeBtn && dayPath) {
-        completeBtn.addEventListener('click', async () => {
-          const { data: { user } } = await supabase.auth.getUser();
-
-          if (!user) {
-            alert('Please log in to track your reading progress.');
-            window.location.href = '/auth';
-            return;
-          }
-
-          const originalText = completeBtn.innerHTML;
-          completeBtn.innerHTML = 'Saving...';
-          completeBtn.setAttribute('disabled', 'true');
-
-          // 1. Record completed day
-          const { error: dayError } = await supabase
-            .from('completed_days')
-            .upsert({ user_id: user.id, day_id: dayPath }, { onConflict: 'user_id, day_id' });
-
-          if (dayError) {
-             alert(`Error saving progress: ${dayError.message}`);
-             completeBtn.innerHTML = originalText;
-             completeBtn.removeAttribute('disabled');
-             return;
-          }
-
-          // 2. Increment stats
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('day_streak, chapters_read')
-            .eq('id', user.id)
-            .single();
-
-          if (profile) {
-            await supabase
-              .from('profiles')
-              .update({
-                day_streak: profile.day_streak + 1,
-                chapters_read: profile.chapters_read + 2 // Assuming avg 2 chapters a day
-              })
-              .eq('id', user.id);
-          }
-
-          completeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Completed!';
-          completeBtn.classList.add('completed');
-          completeBtn.classList.remove('btn-primary');
-          completeBtn.setAttribute('style', 'background: var(--color-gold); color: black;');
-        });
-      }
-    });
-  </script>
 </Layout>

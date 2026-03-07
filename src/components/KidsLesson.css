@@ -1,0 +1,375 @@
+.kids-interactive-container {
+    background: rgba(15, 23, 42, 0.4);
+    border: 2px solid rgba(242, 153, 74, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Progress Bar */
+.kids-progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.kids-progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.progress-step {
+    background: var(--bg-surface);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-text-muted);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background: #f2994a;
+    border-color: #f2994a;
+    color: white;
+    box-shadow: 0 0 15px rgba(242, 153, 74, 0.5);
+    transform: scale(1.05);
+}
+
+.progress-step.done {
+    background: #38ef7d;
+    border-color: #38ef7d;
+    color: #111;
+}
+
+/* Common Step Styling */
+.interactive-step {
+    text-align: center;
+}
+
+.step-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.gold-icon {
+    color: #f2994a;
+}
+
+.step-desc {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.step-actions.center {
+    justify-content: center;
+}
+
+/* Buttons */
+.btn-kids-primary,
+.btn-kids-secondary,
+.btn-kids-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    border: none;
+}
+
+.btn-kids-primary {
+    background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+    color: #111;
+    box-shadow: 0 4px 15px rgba(242, 153, 74, 0.3);
+}
+
+.btn-kids-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(242, 153, 74, 0.5);
+}
+
+.btn-kids-primary:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-kids-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-kids-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-kids-text {
+    background: transparent;
+    color: var(--color-text-muted);
+}
+
+.btn-kids-text:hover {
+    color: white;
+}
+
+
+/* Flashcard */
+.flashcard-stage {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard-front {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.front-icon {
+    width: 64px;
+    height: 64px;
+    color: #f2994a;
+    margin-bottom: 1rem;
+}
+
+.flashcard-front h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 0 1rem 0;
+}
+
+.flip-hint {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    animation: pulse 2s infinite;
+}
+
+.flashcard-back {
+    background: linear-gradient(135deg, rgba(242, 153, 74, 0.2) 0%, rgba(242, 201, 76, 0.1) 100%);
+    border: 2px solid #f2994a;
+    transform: rotateY(180deg);
+}
+
+.flashcard-back p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Story Content slot */
+.kids-story-content {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+/* Quiz Styles */
+.kids-quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.kids-quiz-box {
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.kids-quiz-box h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.kids-quiz-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.kids-opt {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.kids-opt:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.kids-opt.selected {
+    background: rgba(242, 153, 74, 0.2);
+    border-color: #f2994a;
+    color: #f2c94c;
+}
+
+/* Complete Banner */
+.complete-step {
+    padding: 3rem 0;
+}
+
+.reward-badge {
+    margin-bottom: 1.5rem;
+}
+
+.pulse-star {
+    animation: pulse 1.5s infinite;
+    filter: drop-shadow(0 0 20px rgba(242, 153, 74, 0.8));
+}
+
+.complete-step h2 {
+    font-size: 2.5rem;
+    color: #f2c94c;
+    margin: 0 0 0.5rem 0;
+}
+
+.complete-step p {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Animations */
+.animate-in {
+    animation: slideUpFade 0.5s ease forwards;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .kids-progress-bar {
+        font-size: 0;
+    }
+
+    .progress-step {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .progress-step::before {
+        content: counter(step);
+        counter-increment: step;
+        font-size: 1rem;
+    }
+
+    .kids-quiz-options {
+        flex-direction: column;
+    }
+
+    .flashcard-stage {
+        height: 400px;
+    }
+
+    .step-actions {
+        flex-direction: column;
+    }
+}

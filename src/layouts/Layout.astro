@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Icon from '../components/LucideIcon.astro';
+import PastorFooter from '../components/PastorFooter.astro';
 
 interface Props {
   title: string;
@@ -35,7 +36,7 @@ const { title, description = "Lifeline Jacket Bible Study App - Empowering your 
         <nav class="desktop-nav">
           <a href="/">Home</a>
           <a href="/study">Study Plan</a>
-          <a href="/bible-school">Bible School</a>
+          <a href="/academy">Lifeline Bible Academy</a>
           <a href="/children">Children</a>
         </nav>
         <a href="/profile" class="profile-btn">
@@ -46,6 +47,8 @@ const { title, description = "Lifeline Jacket Bible Study App - Empowering your 
       <main>
         <slot />
       </main>
+      
+      <PastorFooter />
 
       <nav class="mobile-nav glass">
         <a href="/" class="active">
@@ -56,9 +59,9 @@ const { title, description = "Lifeline Jacket Bible Study App - Empowering your 
           <Icon name="calendar" />
           <span>Study</span>
         </a>
-        <a href="/bible-school">
+        <a href="/academy">
           <Icon name="graduation-cap" />
-          <span>School</span>
+          <span>Academy</span>
         </a>
         <a href="/children">
           <Icon name="smile" />
