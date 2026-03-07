@@ -1,0 +1,5 @@
+{
+    "buildCommand": "cd mens-network && npm install && npm run build",
+    "outputDirectory": "mens-network/dist",
+    "framework": "vite"
+}
