@@ -17,7 +17,10 @@ const Navbar = () => {
         { name: 'System', path: '/system' },
         { name: 'Pathways', path: '/pathways' },
         { name: 'Programs', path: '/programs' },
+        { name: 'Events', path: '/events' },
+        { name: 'Stories', path: '/testimonials' },
         { name: 'Resources', path: '/resources' },
+        { name: 'Support', path: '/support' },
         { name: 'Contact', path: '/contact' }
     ];
 

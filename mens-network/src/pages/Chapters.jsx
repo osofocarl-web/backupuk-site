@@ -1,82 +1,107 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Map, Building, MapPin, Users, CalendarDays, Key, Award } from 'lucide-react';
+import { Globe, MapPin, Building, ChevronRight } from 'lucide-react';
 import './Chapters.css';
 
+const globalDirectory = {
+    "Africa": {
+        "Ghana": ["Backup Accra", "Backup Kumasi", "Backup Takoradi"],
+        "Nigeria": ["Backup Lagos", "Backup Abuja", "Backup Port Harcourt"],
+        "South Africa": ["Backup Johannesburg", "Backup Cape Town"]
+    },
+    "Europe": {
+        "United Kingdom": ["Backup London", "Backup Manchester", "Backup Birmingham"],
+        "Germany": ["Backup Berlin", "Backup Munich"]
+    },
+    "North America": {
+        "United States": ["Backup New York", "Backup Atlanta", "Backup Houston", "Backup Los Angeles"],
+        "Canada": ["Backup Toronto", "Backup Vancouver"]
+    },
+    "Oceania": {
+        "Australia": ["Backup Sydney", "Backup Melbourne"]
+    }
+};
+
 const Chapters = () => {
+    const [selectedContinent, setSelectedContinent] = useState(null);
+    const [selectedNation, setSelectedNation] = useState(null);
+
     return (
         <div className="chapters-page">
-            {/* Header */}
             <section className="page-header text-center">
                 <div className="container animate-fade-in">
                     <Globe size={64} className="text-accent mb-4 mx-auto" />
-                    <h1 className="text-accent">A GLOBAL BROTHERHOOD</h1>
+                    <h1 className="text-accent">GLOBAL CHAPTERS DIRECTORY</h1>
                     <p className="lead max-w-800 mx-auto">
-                        Backup Men’s Network is growing into a global movement of men supporting one another to rise stronger.
-                    </p>
-                    <p className="description text-muted max-w-800 mx-auto mt-3">
-                        Through local chapters, national networks, and international conferences, men can connect with brothers around the world. Wherever life takes you, the brotherhood is there.
+                        A worldwide brotherhood. Find a Backup Men's chapter near you or pioneer one in your city.
                     </p>
                 </div>
             </section>
 
-            {/* Chapter Structure */}
-            <section className="structure-section section-padding container">
-                <h2 className="text-center text-accent mb-3">EXPANSION MODEL</h2>
-                <p className="lead text-center max-w-600 mx-auto mb-5">
-                    To build a worldwide brotherhood, Backup Men’s Network operates through city and national chapters.
-                </p>
+            <section className="directory-section section-padding container">
 
-                <div className="structure-grid">
-
-                    {/* Global */}
-                    <div className="structure-node glass-card animate-fade-in delay-100">
-                        <div className="node-icon">
-                            <Globe size={32} className="text-accent" />
+                {/* 1. Continents */}
+                <h2 className="text-accent mb-4 text-center">1. Select Region</h2>
+                <div className="grid-responsive mb-5">
+                    {Object.keys(globalDirectory).map(continent => (
+                        <div
+                            key={continent}
+                            className={`glass-card p-4 text-center cursor-pointer transition ${selectedContinent === continent ? 'border-accent' : ''}`}
+                            onClick={() => { setSelectedContinent(continent); setSelectedNation(null); }}
+                            style={{ cursor: 'pointer', border: selectedContinent === continent ? '2px solid var(--color-accent)' : '2px solid transparent' }}
+                        >
+                            <Globe size={32} className="text-accent mx-auto mb-3" />
+                            <h3>{continent}</h3>
                         </div>
-                        <h3>GLOBAL NETWORK</h3>
-                        <p className="subtext text-accent mb-3">Backup Men’s Network International</p>
-                        <p className="description text-muted">
-                            Oversees the global vision, leadership development, and expansion strategy.
-                        </p>
-                    </div>
-
-                    {/* Regional */}
-                    <div className="structure-node glass-card animate-fade-in delay-200">
-                        <div className="node-icon">
-                            <Map size={32} className="text-accent" />
-                        </div>
-                        <h3>REGIONAL CHAPTERS</h3>
-                        <p className="subtext text-accent mb-3">e.g., Backup Men UK, Backup Men Africa</p>
-                        <p className="description text-muted">
-                            Coordinating activities, conferences, and resource distribution across countries within a specific continent or region.
-                        </p>
-                    </div>
-
-                    {/* National */}
-                    <div className="structure-node glass-card animate-fade-in delay-300">
-                        <div className="node-icon">
-                            <Building size={32} className="text-accent" />
-                        </div>
-                        <h3>NATIONAL CHAPTERS</h3>
-                        <p className="subtext text-accent mb-3">e.g., United Kingdom, Ghana, United States</p>
-                        <p className="description text-muted">
-                            Organizing national conferences, large-scale networking events, and overseeing the comprehensive leadership programs for their nation.
-                        </p>
-                    </div>
-
-                    {/* City */}
-                    <div className="structure-node glass-card animate-fade-in delay-100">
-                        <div className="node-icon">
-                            <MapPin size={32} className="text-accent" />
-                        </div>
-                        <h3>CITY CHAPTERS</h3>
-                        <p className="subtext text-accent mb-3">e.g., Backup London, Backup Accra</p>
-                        <p className="description text-muted">
-                            The heartbeat of the brotherhood. City chapters host local mentorship circles, weekly brotherhood meetups, and community activities.
-                        </p>
-                    </div>
-
+                    ))}
                 </div>
+
+                {/* 2. Nations */}
+                {selectedContinent && (
+                    <div className="animate-fade-in mb-5">
+                        <h2 className="text-accent mb-4 text-center">2. Select Nation</h2>
+                        <div className="grid-responsive">
+                            {Object.keys(globalDirectory[selectedContinent]).map(nation => (
+                                <div
+                                    key={nation}
+                                    className={`glass-card p-4 text-center cursor-pointer transition ${selectedNation === nation ? 'border-accent' : ''}`}
+                                    onClick={() => setSelectedNation(nation)}
+                                    style={{ cursor: 'pointer', border: selectedNation === nation ? '2px solid var(--color-accent)' : '2px solid transparent' }}
+                                >
+                                    <Building size={32} className="text-accent mx-auto mb-3" />
+                                    <h3>{nation}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* 3. Cities */}
+                {selectedContinent && selectedNation && (
+                    <div className="animate-fade-in">
+                        <h2 className="text-accent mb-4 text-center">3. Active City Chapters</h2>
+                        <div className="grid-responsive">
+                            {globalDirectory[selectedContinent][selectedNation].map(city => (
+                                <div key={city} className="glass-card p-4 flex items-center justify-between" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                        <MapPin size={24} className="text-accent" />
+                                        <h3 style={{ margin: 0 }}>{city}</h3>
+                                    </div>
+                                    <Link to={`/join?chapter=${encodeURIComponent(city)}`} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
+                                        Join
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="text-center mt-5 p-4 glass-card">
+                            <h3 className="text-accent mb-2">City Not Listed?</h3>
+                            <p className="mb-4">Become a pioneer and establish the brotherhood in your city.</p>
+                            <Link to="/host-event" className="btn btn-outline">Start a Chapter Here</Link>
+                        </div>
+                    </div>
+                )}
+
             </section>
 
             {/* Leadership & Activities Split */}

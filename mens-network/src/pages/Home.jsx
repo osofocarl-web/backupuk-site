@@ -75,6 +75,7 @@ const Home = () => {
                             <img
                                 src="/john-carl-acquah.jpg"
                                 alt="Pastor John Carl Acquah"
+                                loading="lazy"
                                 style={{
                                     width: '100%',
                                     maxWidth: '400px',

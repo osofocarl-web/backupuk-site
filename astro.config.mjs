@@ -10,6 +10,9 @@ const env = loadEnv('', process.cwd(), 'PUBLIC_');
 export default defineConfig({
   output: 'server',
   vite: {
+    server: {
+      allowedHosts: ['wrist-opinion-lights-chat.trycloudflare.com'],
+    },
     define: {
       'import.meta.env.PUBLIC_SUPABASE_URL': JSON.stringify(env.PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'),
       'import.meta.env.PUBLIC_SUPABASE_ANON_KEY': JSON.stringify(env.PUBLIC_SUPABASE_ANON_KEY || 'placeholder_key'),

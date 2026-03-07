@@ -169,7 +169,7 @@ const Anchors = () => {
                 <div className="container">
                     <h2 className="mb-3">Ready to Lead?</h2>
                     <p className="lead mb-4 max-w-600 mx-auto">Apply to join the Anchor Mentorship Program and start multiplying strength in other men.</p>
-                    <Link to="/contact" className="btn btn-primary btn-lg">Apply to be an Anchor</Link>
+                    <Link to="/become-anchor" className="btn btn-primary btn-lg">Apply to be an Anchor</Link>
                 </div>
             </section>
         </div>
