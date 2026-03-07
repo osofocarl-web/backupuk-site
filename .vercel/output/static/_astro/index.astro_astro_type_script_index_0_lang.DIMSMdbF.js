@@ -1,7 +1,0 @@
-import{s as a}from"./supabase.Drkbb0bK.js";document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("saveNote"),i=document.getElementById("noteTitle"),l=document.getElementById("noteContent"),n=document.getElementById("notesList"),d=async()=>{if(!n)return;const{data:{user:r}}=await a.auth.getUser();if(!r){n.innerHTML='<p style="color: grey; font-style: italic;">Please log in to see notes.</p>';return}const{data:t,error:o}=await a.from("notes").select("*").order("created_at",{ascending:!1});if(o){n.innerHTML=`<p style="color: red;">Error loading notes: ${o.message}</p>`;return}if(!t||t.length===0){n.innerHTML='<p style="color: grey; font-style: italic;">No notes saved yet.</p>';return}n.innerHTML=t.map(s=>`
-          <div class="note-item">
-            <h3>${s.title}</h3>
-            <p>${s.content}</p>
-            <span class="date">${new Date(s.created_at).toLocaleDateString()}</span>
-          </div>
-        `).join("")};e&&i&&l&&e.addEventListener("click",async()=>{const r=i.value.trim(),t=l.value.trim();if(!r||!t){alert("Please enter both a title and content.");return}const{data:{user:o}}=await a.auth.getUser();if(!o){alert("You must be logged in to save a note.");return}const s=e.innerHTML;e.innerHTML="Saving...",e.setAttribute("disabled","true");const{error:c}=await a.from("notes").insert([{title:r,content:t,user_id:o.id}]);if(e.innerHTML=s,e.removeAttribute("disabled"),c){alert(`Error saving note: ${c.message}`);return}i.value="",l.value="",d()}),d()});

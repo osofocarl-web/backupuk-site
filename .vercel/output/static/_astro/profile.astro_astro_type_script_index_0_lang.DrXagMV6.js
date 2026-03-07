@@ -1,1 +1,0 @@
-import{s as t}from"./supabase.Drkbb0bK.js";const e=document.getElementById("logout-btn");e&&e.addEventListener("click",async()=>{await t.auth.signOut(),document.cookie="sb-access-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;",document.cookie="sb-refresh-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;",window.location.href="/auth"});
