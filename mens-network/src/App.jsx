@@ -15,6 +15,7 @@ const Pillars = lazy(() => import('./pages/Pillars'));
 const Chapters = lazy(() => import('./pages/Chapters'));
 const ChapterDetail = lazy(() => import('./pages/ChapterDetail'));
 const Events = lazy(() => import('./pages/Events'));
+const StartChapter = lazy(() => import('./pages/StartChapter'));
 const HostEvent = lazy(() => import('./pages/HostEvent'));
 const BecomeAnchor = lazy(() => import('./pages/BecomeAnchor'));
 const Join = lazy(() => import('./pages/Join'));
@@ -63,6 +64,7 @@ function App() {
             <Route path="/chapters" element={<Chapters />} />
             <Route path="/chapters/:slug" element={<ChapterDetail />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/start-chapter" element={<StartChapter />} />
             <Route path="/host-event" element={<HostEvent />} />
             <Route path="/become-anchor" element={<BecomeAnchor />} />
             <Route path="/join" element={<Join />} />

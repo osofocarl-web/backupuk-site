@@ -8,7 +8,9 @@
             43.6532
         ],
         "status": "emerging",
-        "interest_level": "High"
+        "interest_level": "High",
+        "number_of_requests": 24,
+        "potential_hosts": 2
     },
     {
         "city": "Sydney",
@@ -19,7 +21,9 @@
             -33.8688
         ],
         "status": "emerging",
-        "interest_level": "Medium"
+        "interest_level": "Medium",
+        "number_of_requests": 15,
+        "potential_hosts": 0
     },
     {
         "city": "Lagos",
@@ -30,7 +34,9 @@
             6.5244
         ],
         "status": "planned",
-        "interest_level": "Very High"
+        "interest_level": "Very High",
+        "number_of_requests": 56,
+        "potential_hosts": 4
     },
     {
         "city": "Berlin",
@@ -41,6 +47,8 @@
             52.5200
         ],
         "status": "emerging",
-        "interest_level": "Low"
+        "interest_level": "Low",
+        "number_of_requests": 8,
+        "potential_hosts": 1
     }
 ]

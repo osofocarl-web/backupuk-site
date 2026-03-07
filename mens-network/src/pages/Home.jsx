@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Anchor, Target, Users, Globe, Briefcase, MapPin } from 'lucide-react';
+import { ArrowRight, Anchor, Target, Users, Globe, Briefcase, MapPin, Building } from 'lucide-react';
+import impactData from '../data/impact.json';
 import './Home.css';
 
 const Home = () => {
@@ -67,31 +68,57 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Global Map Teaser */}
-            <section className="map-teaser-section section-padding" style={{ backgroundColor: '#050505' }}>
-                <div className="container text-center">
-                    <h2 className="text-accent mb-3">BROTHERHOOD WITHOUT BORDERS</h2>
+            {/* Brotherhood Impact Dashboard / Momentum Section */}
+            <section className="momentum-section section-padding" style={{ backgroundColor: '#050505', position: 'relative' }}>
+                <div className="container text-center max-w-1200 mx-auto">
+                    <h2 className="text-accent mb-3" style={{ fontSize: '2.5rem', letterSpacing: '2px' }}>BROTHERHOOD WITHOUT BORDERS</h2>
                     <p className="lead max-w-800 mx-auto mb-5">
-                        Backup Men’s Network is expanding rapidly across cities and continents. From London to Accra, New York to Johannesburg—men are rising together globally.
+                        We are rapidly expanding across cities and continents. From London to Accra, New York to Johannesburg—men are rising together globally.
                     </p>
 
-                    <div className="glass-card max-w-1000 mx-auto p-2" style={{ position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px' }}>
-                        {/* Static fallback pattern representing the globe */}
-                        <div style={{ height: '350px', width: '100%', background: 'radial-gradient(circle at center, rgba(201,147,59,0.1) 0%, transparent 70%)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                            <Globe size={64} style={{ color: 'rgba(201,147,59,0.5)' }} className="mb-4" />
-                            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                                <span style={{ backgroundColor: 'rgba(201,147,59,0.2)', color: 'var(--color-accent)', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.9rem', fontWeight: 'bold' }}>4 Continents</span>
-                                <span style={{ backgroundColor: 'rgba(201,147,59,0.2)', color: 'var(--color-accent)', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.9rem', fontWeight: 'bold' }}>Active Chapters</span>
-                                <span style={{ backgroundColor: 'rgba(201,147,59,0.2)', color: 'var(--color-accent)', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.9rem', fontWeight: 'bold' }}>Global Events</span>
-                            </div>
+                    {/* Impact Metrics Grid */}
+                    <div className="grid-responsive gap-4 mb-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+                        <div className="glass-card p-5 animate-fade-in delay-100 text-center border-b-4 border-accent">
+                            <h3 className="text-4xl font-bold text-white mb-2" style={{ fontSize: '3rem' }}>{impactData.men_in_network.toLocaleString()}+</h3>
+                            <p className="text-accent uppercase tracking-widest text-sm font-bold flex items-center justify-center gap-2"><Users size={16} /> Men in Network</p>
                         </div>
+                        <div className="glass-card p-5 animate-fade-in delay-200 text-center border-b-4 border-accent">
+                            <h3 className="text-4xl font-bold text-white mb-2" style={{ fontSize: '3rem' }}>{impactData.cities_reached.toLocaleString()}</h3>
+                            <p className="text-accent uppercase tracking-widest text-sm font-bold flex items-center justify-center gap-2"><MapPin size={16} /> Cities Reached</p>
+                        </div>
+                        <div className="glass-card p-5 animate-fade-in delay-300 text-center border-b-4 border-accent">
+                            <h3 className="text-4xl font-bold text-white mb-2" style={{ fontSize: '3rem' }}>{impactData.events_hosted.toLocaleString()}</h3>
+                            <p className="text-accent uppercase tracking-widest text-sm font-bold flex items-center justify-center gap-2"><Globe size={16} /> Events Hosted</p>
+                        </div>
+                        <div className="glass-card p-5 animate-fade-in delay-400 text-center border-b-4 border-accent">
+                            <h3 className="text-4xl font-bold text-white mb-2" style={{ fontSize: '3rem' }}>{impactData.active_anchors.toLocaleString()}</h3>
+                            <p className="text-accent uppercase tracking-widest text-sm font-bold flex items-center justify-center gap-2"><Anchor size={16} /> Active Mentors</p>
+                        </div>
+                    </div>
 
-                        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.6)' }} className="transition-all hover:bg-black/40">
-                            <Link to="/chapters" className="btn btn-primary btn-lg" style={{ boxShadow: '0 0 30px rgba(201,147,59,0.3)', padding: '1rem 2.5rem', fontSize: '1.2rem' }}>
-                                Explore the Global Interactive Map
+                    {/* Map Exploration Gateway */}
+                    <div className="glass-card max-w-1000 mx-auto p-5 mb-5" style={{ border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px' }}>
+                        <div style={{ height: '250px', width: '100%', background: 'radial-gradient(circle at center, rgba(201,147,59,0.15) 0%, transparent 70%)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                            <Globe size={64} style={{ color: 'rgba(201,147,59,0.5)' }} className="mb-4 animate-pulse" />
+                            <h3 className="text-white mb-4">View the International Footprint</h3>
+                            <Link to="/chapters" className="btn btn-primary btn-lg" style={{ boxShadow: '0 0 30px rgba(201,147,59,0.3)' }}>
+                                Launch Global Explorer Map
                             </Link>
                         </div>
                     </div>
+
+                    {/* Growth Funnel CTAs */}
+                    <div className="mt-5 glass-card p-5 max-w-1000 mx-auto flex flex-col items-center border border-accent/20 bg-accent/5">
+                        <h3 className="text-accent mb-2">Build The Movement</h3>
+                        <p className="text-gray-300 mb-4 text-center max-w-600">
+                            Is the brotherhood not active in your city yet? Take the lead. We provide the blueprint, training, and global support for you to pioneer the movement locally.
+                        </p>
+                        <div className="flex gap-4 justify-center flex-wrap">
+                            <Link to="/start-chapter" className="btn btn-primary flex items-center gap-2"><Building size={18} /> Start a Chapter</Link>
+                            <Link to="/host-event" className="btn btn-outline flex items-center gap-2 text-white border-white"><Target size={18} /> Host a Backup Gathering</Link>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
