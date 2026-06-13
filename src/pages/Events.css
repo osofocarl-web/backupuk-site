@@ -1,0 +1,210 @@
+/* Events Page Styles */
+.events-page .page-header {
+    padding: 8rem 0 4rem;
+    background: radial-gradient(circle at top center, rgba(28, 37, 65, 0.8) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(18, 22, 33, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 30px rgba(201, 147, 59, 0.1);
+}
+
+.event-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #000;
+}
+
+.event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-image {
+    transform: scale(1.05);
+}
+
+.event-media-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(18,22,33,0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-type-badge {
+    background-color: rgba(201, 147, 59, 0.15);
+    color: var(--color-accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.event-status-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.event-status-badge.open {
+    color: #4ade80;
+}
+
+.event-status-badge.selling {
+    color: #f59e0b;
+}
+
+.event-status-badge.upcoming {
+    color: #3b82f6;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.play-promo-btn {
+    position: absolute;
+    background: rgba(201, 147, 59, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 147, 59, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+}
+
+.play-promo-btn:hover {
+    transform: scale(1.1);
+    background: #c9933b;
+}
+
+/* Video Modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content {
+    background: rgba(18, 22, 33, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    color: #fff;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.video-player-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.video-player-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

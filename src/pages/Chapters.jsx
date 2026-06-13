@@ -144,9 +144,25 @@ const Chapters = () => {
                             <div className="flex items-center gap-2 mb-4 text-sm text-gray-400">
                                 <Calendar size={16} color="#4ade80" /> {new Date(evt.event_date).toLocaleDateString()}
                             </div>
-                            <Link to={evt.registration_link} className="btn w-full flex justify-center items-center gap-2" style={{ border: '1px solid #4ade80', color: '#4ade80' }}>
-                                Register
-                            </Link>
+                            {evt.registration_link.startsWith('http') ? (
+                                <a 
+                                    href={evt.registration_link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="btn w-full flex justify-center items-center gap-2" 
+                                    style={{ border: '1px solid #4ade80', color: '#4ade80' }}
+                                >
+                                    Join Zoom
+                                </a>
+                            ) : (
+                                <Link 
+                                    to={evt.registration_link} 
+                                    className="btn w-full flex justify-center items-center gap-2" 
+                                    style={{ border: '1px solid #4ade80', color: '#4ade80' }}
+                                >
+                                    Register
+                                </Link>
+                            )}
                         </div>
                     ))}
 

@@ -1,5 +1,23 @@
 [
     {
+        "title": "\"No Man Left Behind\" Global Gathering",
+        "city": "Online",
+        "country": "Global",
+        "coordinates": [
+            -0.1276,
+            51.5074
+        ],
+        "event_date": "2026-06-20T17:00:00Z",
+        "event_type": "Prayer & Fellowship",
+        "host_name": "John Carl Acquah",
+        "venue": "Zoom (ID: 378 690 3834 | Pass: AMEN)",
+        "registration_link": "https://us02web.zoom.us/j/3786903834",
+        "event_status": "Join on Zoom",
+        "short_description": "Join men from around the world as we stand together in prayer, encouragement, and brotherhood. Zoom ID: 378 690 3834, Passcode: AMEN.",
+        "image": "/no-man-left-behind-flyer.jpg",
+        "video": "/prayer-meeting-invite.mov"
+    },
+    {
         "title": "Backup London Summit 2026",
         "city": "London",
         "country": "United Kingdom",

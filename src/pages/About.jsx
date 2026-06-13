@@ -117,11 +117,14 @@ const About = () => {
 
                         {/* Founder */}
                         <div className="leader-card glass-card featured-leader">
-                            <div className="leader-header">
-                                <h3>John Carl Acquah</h3>
-                                <span className="badge">Convenor</span>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.5rem' }}>
+                                <img src="/john-carl-acquah.jpg" alt="John Carl Acquah" style={{ width: '100%', maxWidth: '250px', borderRadius: '12px', border: '2px solid var(--color-gold-muted)', marginBottom: '1rem' }} />
+                                <div className="leader-header text-center w-100 justify-content-center">
+                                    <h3>John Carl Acquah</h3>
+                                    <span className="badge mx-auto d-table mt-2">Convenor</span>
+                                </div>
                             </div>
-                            <p className="leader-roles text-accent">Psychologist | Community Advocate | Conference Speaker</p>
+                            <p className="leader-roles text-accent text-center">Psychologist | Community Advocate | Conference Speaker</p>
                             <p className="description mt-3">
                                 John Carl Acquah is the convenor behind Backup Men’s Network. With a background in psychology, leadership, and community development, he is passionate about helping men rediscover purpose, resilience, and strength.
                             </p>

@@ -102,6 +102,20 @@ const Resources = () => {
                             <a href="#" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><Video size={18} className="me-2" /> Watch Videos</a>
                         </div>
 
+                        {/* Resource Card 5 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">Brotherhood Intro Flyer</h3>
+                            <p className="description mb-4">Download the official Backup Men's Network introductory flyer to share with your local community and friends.</p>
+                            <a href="/brotherhood-intro-flyer.png" target="_blank" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><FileText size={18} className="me-2" /> View Flyer</a>
+                        </div>
+
+                        {/* Resource Card 6 */}
+                        <div className="resource-card glass-card">
+                            <h3 className="text-accent mb-3">Founder Intro Flyer</h3>
+                            <p className="description mb-4">A complete overview of our founder's vision, philosophy, and background leading the Backup Men's Network.</p>
+                            <a href="/founder-intro-flyer.png" target="_blank" className="btn btn-outline" style={{ display: 'inline-block', textAlign: 'center' }}><FileText size={18} className="me-2" /> View Flyer</a>
+                        </div>
+
                     </div>
 
                     <p className="lead text-muted mt-5 mb-0">Join the network to gain immediate access to the full resource library and mentor-curated guides.</p>
