@@ -14,6 +14,7 @@ const Programs = lazy(() => import('./pages/Programs'));
 const Pillars = lazy(() => import('./pages/Pillars'));
 const Chapters = lazy(() => import('./pages/Chapters'));
 const ChapterDetail = lazy(() => import('./pages/ChapterDetail'));
+const Programme2027 = lazy(() => import('./pages/Programme2027'));
 const Events = lazy(() => import('./pages/Events'));
 const StartChapter = lazy(() => import('./pages/StartChapter'));
 const HostEvent = lazy(() => import('./pages/HostEvent'));
@@ -64,6 +65,7 @@ function App() {
             <Route path="/chapters" element={<Chapters />} />
             <Route path="/chapters/:slug" element={<ChapterDetail />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/programme-2027" element={<Programme2027 />} />
             <Route path="/start-chapter" element={<StartChapter />} />
             <Route path="/host-event" element={<HostEvent />} />
             <Route path="/become-anchor" element={<BecomeAnchor />} />

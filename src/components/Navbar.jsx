@@ -18,6 +18,7 @@ const Navbar = () => {
         { name: 'Pathways', path: '/pathways' },
         { name: 'Programs', path: '/programs' },
         { name: 'Events', path: '/events' },
+        { name: '2027 Plan', path: '/programme-2027' },
         { name: 'Stories', path: '/testimonials' },
         { name: 'Resources', path: '/resources' },
         { name: 'Support', path: '/support' },

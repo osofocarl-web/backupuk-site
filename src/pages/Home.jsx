@@ -17,7 +17,7 @@ const Home = () => {
                         <span>STRONGER TOGETHER.</span>
                     </h1>
                     <p className="hero-subtitle delay-100">
-                        Backup Men’s Network is a global brotherhood empowering men to rise, rebuild, and thrive through mentorship, networking, and community support.
+                        Backup is a place to talk, find support and meet other men. We bring people together through regular circles, mentoring, wellbeing conversations and practical opportunities.
                     </p>
                     <p className="hero-strong delay-200">
                         Through Anchors, brotherhood circles, conferences, and global networking opportunities, we ensure that no man walks alone.
@@ -33,6 +33,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <section className="section-padding" style={{background:'#f7f6f1',color:'#17283c'}}><div className="container"><p style={{fontWeight:700,color:'#81632c'}}>MORE THAN AN EVENT</p><h2 style={{fontFamily:'Inter, sans-serif',fontSize:'clamp(1.8rem,4vw,2.8rem)'}}>You don't have to carry it alone.</h2><p style={{maxWidth:730,fontSize:'1.15rem',marginBottom:26}}>Sometimes men need advice. Sometimes they need practical help. Sometimes they just need someone who will listen. Backup is developing regular men's circles, wellbeing check-ins and connections to appropriate support.</p><div style={{display:'flex',gap:14,flexWrap:'wrap'}}><Link to="/contact" className="btn btn-primary">Ask about support</Link><Link to="/programme-2027" className="btn" style={{border:'1px solid #17283c',color:'#17283c'}}>Explore the 2027 programme</Link></div><p style={{fontSize:13,marginTop:20}}>Programme activities are proposed and subject to confirmation. Peer support is not a substitute for clinical care.</p></div></section>
 
             {/* Global Networking Section (NEW) */}
             <section className="networking-section section-padding">

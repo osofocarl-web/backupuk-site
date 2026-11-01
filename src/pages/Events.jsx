@@ -50,14 +50,14 @@ const Events = () => {
                     <Calendar size={64} className="text-accent mb-4 mx-auto" />
                     <h1 className="text-accent">BACKUP AROUND THE WORLD</h1>
                     <p className="lead max-w-800 mx-auto">
-                        Brotherhood without borders. Discover active prayer gathers, global leadership summits, and regional retreats.
+                        Find a gathering, connect with other men and discover what is coming next.
                     </p>
                 </div>
             </section>
 
             <section className="section-padding container">
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-                    {eventsData.map((event, index) => (
+                <div style={{padding:'24px',background:'#f4f1e9',color:'#17283c',borderRadius:12,marginBottom:30}}><h2 style={{fontFamily:'Inter,sans-serif'}}>2027: a year of connection</h2><p>Our monthly circles, wellbeing conversations, and Barcelona gathering are being planned. Dates and venues are not yet confirmed.</p><Link to="/programme-2027" style={{fontWeight:700,color:'#17283c',textDecoration:'underline'}}>Read the proposed 2027 calendar →</Link></div><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                    {eventsData.filter(event => new Date(event.event_date).getTime() >= Date.now()).map((event, index) => (
                         <div key={index} className="event-card animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                             {/* Card Media Header */}
                             <div className="event-image-container">
