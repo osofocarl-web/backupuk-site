@@ -52,7 +52,7 @@ const Contact = () => {
                     <MessageSquare size={64} className="text-accent mb-4 mx-auto" />
                     <h1 className="text-accent">CONNECT WITH THE NETWORK</h1>
                     <p className="lead max-w-800 mx-auto">
-                        Whether you have a question, need immediate support, or want to become an Anchor mentor, we are here.
+                        Whether you have a question, want to ask for peer support, or are interested in becoming an Anchor mentor, we are here.
                     </p>
                 </div>
             </section>
@@ -112,9 +112,9 @@ const Contact = () => {
                         {/* Request Backup Form */}
                         {activeForm === 'backup' && (
                             <form className="custom-form backup-form" onSubmit={onSubmit}>
-                                <input type="hidden" name="subject" value="URGENT: Request Backup" />
+                                <input type="hidden" name="subject" value="Request for peer support" />
                                 <h2 className="text-center mb-2" style={{ color: '#ff4b4b' }}>Request Backup</h2>
-                                <p className="text-center text-muted mb-4 pb-3 border-b">If you are going through a difficult time, you do not have to face it alone.</p>
+                                <p className="text-center text-muted mb-4 pb-3 border-b">If you are going through a difficult time, you can enquire about peer support. This form is not monitored for emergencies. In immediate danger in the UK call 999; for urgent NHS advice call 111.</p>
 
                                 <div className="form-group">
                                     <label>Name</label>
@@ -140,7 +140,7 @@ const Contact = () => {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Brief description of situation</label>
+                                    <label>Brief description (please avoid sensitive medical details)</label>
                                     <textarea name="description" rows="4" required></textarea>
                                 </div>
                                 <div className="form-group">
@@ -149,7 +149,7 @@ const Contact = () => {
                                         <option value="" disabled>Select urgency</option>
                                         <option value="low">Low - Exploring options</option>
                                         <option value="medium">Medium - Need guidance soon</option>
-                                        <option value="high">High - In crisis</option>
+                                        <option value="high">I would welcome contact when possible (not an emergency)</option>
                                     </select>
                                 </div>
                                 <div className="form-group checkbox-group">
@@ -161,7 +161,7 @@ const Contact = () => {
                                 <button type="submit" className="btn btn-lg full-width mt-4" style={{ backgroundColor: '#ff4b4b', color: '#fff', border: 'none' }} disabled={status === 'submitting'}>
                                     {status === 'submitting' ? 'Submitting...' : 'Submit Request'}
                                 </button>
-                                {status === 'success' && <p className="text-center mt-3" style={{ color: '#00cc66', fontWeight: 'bold' }}>✓ Request received. We will contact you shortly.</p>}
+                                {status === 'success' && <p className="text-center mt-3" style={{ color: '#00cc66', fontWeight: 'bold' }}>✓ Your message has been submitted. We cannot guarantee a response time; for urgent help contact NHS 111 or emergency services.</p>}
                                 {status === 'error' && <p className="text-center mt-3" style={{ color: '#ff4b4b', fontWeight: 'bold' }}>Something went wrong. Please try again.</p>}
                             </form>
                         )}

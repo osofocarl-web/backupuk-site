@@ -13,16 +13,11 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
-        { name: 'Anchors', path: '/anchors' },
-        { name: 'System', path: '/system' },
-        { name: 'Pathways', path: '/pathways' },
-        { name: 'Programs', path: '/programs' },
+        { name: 'Get Support', path: '/contact' },
+        { name: 'Programmes', path: '/programs' },
         { name: 'Events', path: '/events' },
-        { name: '2027 Plan', path: '/programme-2027' },
         { name: 'Stories', path: '/testimonials' },
-        { name: 'Resources', path: '/resources' },
-        { name: 'Support', path: '/support' },
-        { name: 'Contact', path: '/contact' }
+        { name: 'Resources', path: '/resources' }
     ];
 
     return (
