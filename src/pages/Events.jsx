@@ -56,6 +56,7 @@ const Events = () => {
             </section>
 
             <section className="section-padding container">
+                {eventsData.filter(event => new Date(event.event_date).getTime() >= Date.now()).length === 0 && <p style={{marginBottom:24,color:'#dce5e9'}}>There are no confirmed upcoming event listings yet. View our proposed 2027 programme for ideas in development.</p>}
                 <div style={{padding:'24px',background:'#f4f1e9',color:'#17283c',borderRadius:12,marginBottom:30}}><h2 style={{fontFamily:'Inter,sans-serif'}}>2027: a year of connection</h2><p>Our monthly circles, wellbeing conversations, and Barcelona gathering are being planned. Dates and venues are not yet confirmed.</p><Link to="/programme-2027" style={{fontWeight:700,color:'#17283c',textDecoration:'underline'}}>Read the proposed 2027 calendar →</Link></div><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
                     {eventsData.filter(event => new Date(event.event_date).getTime() >= Date.now()).map((event, index) => (
                         <div key={index} className="event-card animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
