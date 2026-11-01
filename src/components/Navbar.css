@@ -154,3 +154,9 @@
         display: none;
     }
 }
+.navbar-links{gap:.85rem!important}.nav-item{font-size:.76rem!important;letter-spacing:.015em!important;text-transform:none!important}
+.navbar{background:rgba(18,39,57,.97);box-shadow:0 2px 22px #0917261a}
+.navbar-logo{color:#e5bc80}.logo-text span:first-child{font-family:Inter,system-ui,sans-serif;letter-spacing:.09em}
+.mobile-nav-item{font-family:Inter,system-ui,sans-serif!important;text-transform:none!important;letter-spacing:0!important;font-size:1.12rem!important}
+.mobile-menu{overflow-y:auto;padding-bottom:6rem}
+@media (max-width:1300px){.navbar-links{display:none!important}.mobile-toggle{display:flex!important}}
