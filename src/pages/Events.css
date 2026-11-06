@@ -5,6 +5,50 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.featured-event {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    padding: clamp(1rem, 4vw, 2rem);
+    background: #f4f1e9;
+    color: #17283c;
+    border-radius: 12px;
+}
+
+.featured-event-flyer {
+    width: min(100%, 220px);
+}
+
+.featured-event-flyer img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.featured-event-details {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+.featured-event-status {
+    color: #715126;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.featured-event-details h2 {
+    margin: 0.4rem 0 0.7rem;
+    font-family: Inter, sans-serif;
+}
+
+.featured-event-details .btn {
+    margin-top: 1rem;
+}
+
 .event-card {
     display: flex;
     flex-direction: column;
