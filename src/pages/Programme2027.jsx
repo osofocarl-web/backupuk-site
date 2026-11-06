@@ -26,7 +26,7 @@ export default function Programme2027(){return <div style={{background:'#faf9f5'
       <li>Rev. Dr. Patrick E. Quainoo, guest speaker (USA)</li>
       <li>Rev. Stephen Amenya, resource person (Ghana)</li>
     </ul>
-    <p style={{marginBottom:12}}>Dates, venue and registration details will be announced.</p>
+    <p style={{marginBottom:12}}>Registration will open soon. Dates and venue will be announced.</p>
     <Link to="/contact" style={{color:'#112640',fontWeight:700,textDecoration:'underline'}}>Contact Backup for enquiries</Link>
   </div>
   <a href="/barcelona-2027-flyer.webp" aria-label="Open the Barcelona 2027 flyer at full size">

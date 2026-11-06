@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, HeartHandshake, Users, CalendarDays, Compass, Globe, MessageCircle, ShieldCheck } from 'lucide-react';
+import { ArrowRight, HeartHandshake, Users, CalendarDays, Compass, MessageCircle, ShieldCheck } from 'lucide-react';
 import './Home.css';
 
 const priorities = [
@@ -20,6 +20,20 @@ export default function Home(){
        <div className="fresh-hero-aside"><div className="fresh-hero-quote"><MessageCircle size={29}/><p>Sometimes the most useful thing a man can hear is, “I'm here. Let's talk.”</p><span>BACKUP · LISTENING, CONNECTION, PRACTICAL SUPPORT</span></div></div>
      </div>
    </section>
+   <section className="fresh-section fresh-warm fresh-featured-event" aria-labelledby="home-barcelona-title">
+     <div className="container fresh-featured-event-grid">
+       <div>
+         <p className="fresh-kicker">BARCELONA 2027 · COMING SOON</p>
+         <h2 id="home-barcelona-title">Men’s Empowerment &amp; Networking Week</h2>
+         <p>Brotherhood Beyond Borders · Barcelona, Spain</p>
+         <p><strong>Registration will open soon.</strong> Dates and venue will be announced.</p>
+         <Link to="/programme-2027" className="fresh-button primary">See programme details <ArrowRight size={18} aria-hidden="true" /></Link>
+       </div>
+       <a href="/barcelona-2027-flyer.webp" className="fresh-featured-flyer">
+         <img src="/barcelona-2027-flyer.webp" alt="Open the full-size Barcelona 2027 flyer" width="880" height="1100" />
+       </a>
+     </div>
+   </section>
    <section className="fresh-section fresh-light"><div className="container">
      <div className="fresh-section-heading"><p className="fresh-kicker">HERE FOR MORE THAN THE BIG MOMENTS</p><h2>Support that continues after the event.</h2><p>Conferences bring people together. The real work happens in the conversations and friendships that follow.</p></div>
      <div className="fresh-priority-grid">{priorities.map(({icon:Icon,title,body,link,action})=><article className="fresh-priority" key={title}><Icon size={30} aria-hidden="true"/><h3>{title}</h3><p>{body}</p><Link to={link}>{action} <ArrowRight size={16}/></Link></article>)}</div>
@@ -33,7 +47,6 @@ export default function Home(){
      <div className="fresh-section-heading"><p className="fresh-kicker">LOOKING AHEAD</p><h2>More reasons to come together in 2027.</h2><p>Our working programme brings together wellbeing, Black History Month, men's health, networking and time to connect.</p></div>
      <div className="fresh-events-grid">
        <article><CalendarDays size={28}/><p className="fresh-tag">YEAR-ROUND · PROPOSED</p><h3>2027 activity calendar</h3><p>Monthly themes and regular circles, designed to keep the network connected throughout the year.</p><Link to="/programme-2027">Explore the calendar →</Link></article>
-       <article><Globe size={28}/><p className="fresh-tag">BARCELONA 2027 · COMING SOON</p><h3>Brotherhood beyond borders</h3><p>Men’s Empowerment &amp; Networking Week in Barcelona, Spain. Dates, venue and registration details will be announced.</p><Link to="/programme-2027">View the Barcelona flyer →</Link></article>
      </div>
    </div></section>
    <section className="fresh-section fresh-founder"><div className="container fresh-founder-grid"><img src="/john-carl-acquah.jpg" alt="John Carl Acquah, convenor of Backup Men's Network" loading="lazy"/><div><p className="fresh-kicker">A WORD FROM OUR CONVENOR</p><h2>“No man should stay down.”</h2><p>Backup exists because men need people who will listen, encourage them and stand alongside them through difficult seasons. We want to build a network that stays connected in everyday life, not only when there's a conference.</p><p className="fresh-founder-name">John Carl Acquah · Convenor</p><Link to="/about" className="fresh-text-link">Our story →</Link></div></div></section>

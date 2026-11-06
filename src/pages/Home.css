@@ -36,7 +36,7 @@
 .fresh-note{background:#fff;border-radius:14px;padding:34px;border-left:5px solid #899c85}
 .fresh-note svg{color:#53725c}
 .fresh-note h3{font-size:1.5rem;margin:12px 0}
-.fresh-events-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.fresh-events-grid{display:grid;gap:20px}
 .fresh-tag{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:#5c765b;margin-top:18px}
 .fresh-founder{background:#f0eeea}
 .fresh-founder-grid{display:grid;grid-template-columns:260px 1fr;gap:54px;align-items:center;max-width:960px}
@@ -44,5 +44,14 @@
 .fresh-founder-name{font-weight:750;margin:18px 0}
 .fresh-footer-cta{text-align:center;background:#182e40;color:#fff;padding:75px 0}
 .fresh-footer-cta p{margin-bottom:28px}
-@media(max-width:800px){.fresh-hero{padding:75px 0}.fresh-hero-grid,.fresh-two-column,.fresh-founder-grid{grid-template-columns:1fr;gap:30px}.fresh-priority-grid{grid-template-columns:1fr}.fresh-events-grid{grid-template-columns:1fr}.fresh-founder img{max-width:280px;height:290px}.fresh-hero-quote{padding:22px}.fresh-section{padding:58px 0}}
+@media(max-width:800px){.fresh-hero{padding:75px 0}.fresh-hero-grid,.fresh-two-column,.fresh-founder-grid{grid-template-columns:1fr;gap:30px}.fresh-priority-grid{grid-template-columns:1fr}.fresh-founder img{max-width:280px;height:290px}.fresh-hero-quote{padding:22px}.fresh-section{padding:58px 0}}
 @media(max-width:450px){.fresh-actions{align-items:stretch;flex-direction:column}.fresh-actions>.fresh-button{text-align:center}.fresh-hero h1{font-size:2.45rem}}
+
+.fresh-featured-event {padding-block:clamp(2.25rem,5vw,4rem)}
+.fresh-featured-event-grid {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(1.25rem,4vw,3rem)}
+.fresh-featured-event-grid > div {flex:1 1 340px;min-width:0}
+.fresh-featured-event .fresh-kicker {color:#715126}
+.fresh-featured-event h2 {max-width:19ch;margin-bottom:0.65rem}
+.fresh-featured-event .fresh-button {margin-top:1.2rem}
+.fresh-featured-flyer {display:block;width:min(100%,260px)}
+.fresh-featured-flyer img {display:block;width:100%;height:auto;border-radius:8px}

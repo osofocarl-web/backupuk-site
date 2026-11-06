@@ -64,7 +64,7 @@ const Events = () => {
                         <p className="featured-event-status">BARCELONA 2027 · COMING SOON</p>
                         <h2 id="barcelona-event-title">Men’s Empowerment &amp; Networking Week</h2>
                         <p>Brotherhood Beyond Borders · Barcelona, Spain</p>
-                        <p>Dates, venue and registration details will be announced.</p>
+                        <p>Registration will open soon. Dates and venue will be announced.</p>
                         <Link to="/programme-2027" className="btn btn-primary">See programme details</Link>
                     </div>
                 </article>
